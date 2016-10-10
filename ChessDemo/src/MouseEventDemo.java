@@ -9,6 +9,9 @@ public class MouseEventDemo implements MouseListener{
 		// TODO Auto-generated method stub
 		BoxCell jp = (BoxCell) e.getSource();
 		System.out.println(jp.getPlaceName());
+		if(jp.isHasMan()){
+			System.out.println(jp.placeName + " has " + jp.getChessMan().name);
+		}
 	}
 
 	@Override

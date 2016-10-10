@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class Main {
 
-	public static final int pawnNumber = 8;
-	public static final int queenNumber = 1;
-	public static final int kingNumber = 1;
-	public static final int rookNumber = 2;
-	public static final int knightNumber = 2;
-	public static final int bishopNumber = 2;
+	private static final int pawnNumber = 8;
+	private static final int queenNumber = 1;
+	private static final int kingNumber = 1;
+	private static final int rookNumber = 2;
+	private static final int knightNumber = 2;
+	private static final int bishopNumber = 2;
 
 	ChessManFactory pawnFac = new PawnFactory();
 	ChessManFactory queenFac = new QueenFactory();
@@ -23,14 +23,14 @@ public class Main {
 		Display ds = new Display();
 
 		Main m = new Main();
-		
-		Player player1 = new Player("Player-1");
-		Player player2 = new Player("Player-2");
+
+		Player player1 = new Player("Player1");
+		Player player2 = new Player("Player2");
 		m.generateChessMan(player1);
 		m.generateChessMan(player2);
 		m.drawChessMan(player1, ds);
 		m.drawChessMan(player2, ds);
-		
+
 		/*
 		 * ChessMan pawn1 = new Pawn("pawn1"); pawn1.draw(ds.boxList.get(8));
 		 * 
@@ -48,47 +48,63 @@ public class Main {
 		 * 
 		 * ChessMan pawn8 = new Pawn("pawn8"); pawn8.draw(ds.boxList.get(15));
 		 */
+		System.err.println();
 	}
 
 	private void generateChessMan(Player p) {
 		// TODO Auto-generated method stub
+		ArrayList<ChessMan> chessMan = new ArrayList<ChessMan>();
 		for (int i = 0; i < rookNumber; i++) {
-			p.getChessManList().add(rookFac.CreateChessMan("rook" + (i + 1)));
+			chessMan.add(rookFac.CreateChessMan("rook" + (i + 1), p.name));
 		}
 		for (int i = 0; i < knightNumber; i++) {
-			p.getChessManList().add(knightFac.CreateChessMan("knight" + (i + 1)));
+			chessMan.add(knightFac.CreateChessMan("knight" + (i + 1), p.name));
 		}
 		for (int i = 0; i < bishopNumber; i++) {
-			p.getChessManList().add(bishopFac.CreateChessMan("bishop" + (i + 1)));
+			chessMan.add(bishopFac.CreateChessMan("bishop" + (i + 1), p.name));
 		}
 		for (int i = 0; i < queenNumber; i++) {
-			p.getChessManList().add(queenFac.CreateChessMan("queen" + (i + 1)));
+			chessMan.add(queenFac.CreateChessMan("queen" + (i + 1), p.name));
 		}
 		for (int i = 0; i < kingNumber; i++) {
-			p.getChessManList().add(kingFac.CreateChessMan("king" + (i + 1)));
+			chessMan.add(kingFac.CreateChessMan("king" + (i + 1), p.name));
 		}
 		for (int i = 0; i < pawnNumber; i++) {
-			p.getChessManList().add(pawnFac.CreateChessMan("pawn" + (i + 1)));
+			chessMan.add(pawnFac.CreateChessMan("pawn" + (i + 1), p.name));
 		}
+		p.setChessManList(chessMan);
 	}
-	
-	private void drawChessMan(Player p, Display ds){
+
+	private void drawChessMan(Player p, Display ds) {
 		ArrayList<ChessMan> chessMans = (ArrayList<ChessMan>) p.getChessManList();
-		ArrayList boxes = (ArrayList) ds.boxList;
-		
-		/*for(ChessMan c : chessMans){
-			c.draw(ds.boxList.get(startInd));
-		}*/
-		chessMans.get(0).draw(ds.boxList.get(0));
-		chessMans.get(1).draw(ds.boxList.get(7));
-		chessMans.get(2).draw(ds.boxList.get(1));
-		chessMans.get(3).draw(ds.boxList.get(6));
-		chessMans.get(4).draw(ds.boxList.get(2));
-		chessMans.get(5).draw(ds.boxList.get(5));
-		chessMans.get(6).draw(ds.boxList.get(3));
-		chessMans.get(7).draw(ds.boxList.get(4));
-		for(int i = 8 ; i <16;i++ ){
-			chessMans.get(i).draw(ds.boxList.get(i));
+		int[] chessManIndex = { 0, 7, 1, 6, 2, 5, 3, 4 };
+		if (p.name.equals("Player1")) {
+			for (int i = 0; i < 16; i++) {
+				if (i < 8)
+					chessMans.get(i).draw(ds.boxList.get(chessManIndex[i]));
+				else
+					chessMans.get(i).draw(ds.boxList.get(i));
+
+				ds.boxList.get(i).setHasMan(true);
+				ds.boxList.get(i).setChessMan(chessMans.get(i));
+			}
+		} 
+		else {
+			for (int i = 0; i < 16; i++) {
+				if (i < 8){
+					chessMans.get(i).draw(ds.boxList.get(chessManIndex[i] + 56));
+					ds.boxList.get(chessManIndex[i] + 56).setHasMan(true);
+					ds.boxList.get(chessManIndex[i] + 56).setChessMan(chessMans.get(i));
+				}
+				else{
+					chessMans.get(i).draw(ds.boxList.get(i + 40));
+					ds.boxList.get(i + 40).setHasMan(true);
+					ds.boxList.get(i + 40).setChessMan(chessMans.get(i));
+//					ds.boxList.get(chessManIndex[i-8]+48).setHasMan(true);
+//					ds.boxList.get(chessManIndex[i-8]+48).setChessMan(chessMans.get(i));
+				}
+			}
+
 		}
 	}
 

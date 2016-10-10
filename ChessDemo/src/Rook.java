@@ -2,15 +2,20 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 
 public class Rook extends ChessMan {
-	public static final String FILE_PATH = "src/img/rook.jpg";
+	public static final String FILE_PATH1 = "src/img/rook.jpg";
+	public static final String FILE_PATH2 = "src/img/rook2.jpg";
 
 	public Rook() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Rook(String name) {
+	public Rook(String name,String playerName) {
 		this.name = name;
-		cMDisplay = new ChessManDisplay(FILE_PATH);
+		if( playerName.equals("Player1"))
+			cMDisplay = new ChessManDisplay(FILE_PATH1);
+		else{
+			cMDisplay = new ChessManDisplay(FILE_PATH2);
+		}
 	}
 
 	@Override
