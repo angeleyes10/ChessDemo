@@ -1,10 +1,20 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Graphics;
+import java.io.File;
+import java.io.IOException;
 
-public class Bishop extends ChessMan{
-	public static final String FILE_PATH = "src/img/bishop.jpg";
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-	public Bishop(String name) {
+public class Pawn extends ChessMan {
+
+	public static final String FILE_PATH = "src/img/pawn.jpg";
+
+	public Pawn(String name) {
 		this.name = name;
 		cMDisplay = new ChessManDisplay(FILE_PATH);
 	}

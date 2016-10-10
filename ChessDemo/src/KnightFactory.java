@@ -1,0 +1,10 @@
+
+public class KnightFactory extends ChessManFactory {
+
+	@Override
+	public Knight CreateChessMan(String name) {
+		// TODO Auto-generated method stub
+		return new Knight(name);
+	}
+
+}
