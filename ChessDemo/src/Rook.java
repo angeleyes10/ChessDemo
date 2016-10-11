@@ -11,6 +11,7 @@ public class Rook extends ChessMan {
 
 	public Rook(String name,String playerName) {
 		this.name = name;
+		this.team = playerName;
 		if( playerName.equals("Player1"))
 			cMDisplay = new ChessManDisplay(FILE_PATH1);
 		else{
@@ -22,7 +23,7 @@ public class Rook extends ChessMan {
 	public void draw(BoxCell jp) {
 		// TODO Auto-generated method stub
 		super.draw();
-		System.out.println("in pawn draw method");
+		//System.out.println("in pawn draw method");
 		jp.add(cMDisplay,BorderLayout.CENTER);
 		jp.setAlignmentX(Component.CENTER_ALIGNMENT);
 		jp.repaint();

@@ -7,8 +7,10 @@ public class Bishop extends ChessMan{
 
 	public Bishop(String name, String playerName) {
 		this.name = name;
-		if( playerName.equals("Player1"))
+		this.team = playerName;
+		if( playerName.equals("Player1")){
 			cMDisplay = new ChessManDisplay(FILE_PATH1);
+		}
 		else{
 			cMDisplay = new ChessManDisplay(FILE_PATH2);
 		}
@@ -18,7 +20,7 @@ public class Bishop extends ChessMan{
 	public void draw(BoxCell jp) {
 		// TODO Auto-generated method stub
 		super.draw();
-		System.out.println("in pawn draw method");
+		//System.out.println("in pawn draw method");
 		jp.add(cMDisplay,BorderLayout.CENTER);
 		jp.setAlignmentX(Component.CENTER_ALIGNMENT);
 		jp.repaint();

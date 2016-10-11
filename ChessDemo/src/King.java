@@ -23,7 +23,7 @@ public class King extends ChessMan {
 	public void draw(BoxCell jp) {
 		// TODO Auto-generated method stub
 		super.draw();
-		System.out.println("in pawn draw method");
+		//System.out.println("in pawn draw method");
 		jp.add(cMDisplay, BorderLayout.CENTER);
 		jp.setAlignmentX(Component.CENTER_ALIGNMENT);
 		jp.repaint();

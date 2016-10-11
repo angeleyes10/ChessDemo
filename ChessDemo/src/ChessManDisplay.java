@@ -28,29 +28,30 @@ public class ChessManDisplay extends JPanel {
 
 	public ChessManDisplay(String filePath) {
 		// TODO Auto-generated constructor stub
-		System.out.println(filePath);
+		//System.out.println(filePath);
 		cFILE_PATH = filePath;
 		try {
 			this.image = ImageIO.read(new File(filePath));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		jl = new JLabel(new ImageIcon(image));
 		jl.setVisible(true);
-		this.setSize(70,70);
-		this.add(jl,BorderLayout.CENTER);
+		this.setSize(70, 70);
+		this.add(jl, BorderLayout.CENTER);
 		this.setEnabled(true);
 		this.setVisible(true);
 	}
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        if (image != null) {
-            int x = 10;
-            int y = 10;
-            g.drawImage(image, x, y, this);
-        }
-    }
+
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		if (image != null) {
+			int x = 10;
+			int y = 10;
+			g.drawImage(image, x, y, this);
+		}
+	}
 
 }

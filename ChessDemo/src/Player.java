@@ -18,7 +18,9 @@ public class Player {
 	public void setChessManList(List<ChessMan> chessManList) {
 		this.chessManList = chessManList;
 	}
-	
+	public void play(){
+		System.out.println(name+ " plays");
+	}
 	
 	
 }

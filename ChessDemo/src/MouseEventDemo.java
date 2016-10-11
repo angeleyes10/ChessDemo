@@ -8,9 +8,14 @@ public class MouseEventDemo implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		BoxCell jp = (BoxCell) e.getSource();
-		System.out.println(jp.getPlaceName());
 		if(jp.isHasMan()){
 			System.out.println(jp.placeName + " has " + jp.getChessMan().name);
+			ChessMan clickedChessMan = jp.getChessMan();
+			clickedChessMan.setSelected(true);
+			System.out.println(clickedChessMan.team);
+		}
+		else{
+			System.out.println(jp.getPlaceName() + " is empty");
 		}
 	}
 
@@ -29,7 +34,16 @@ public class MouseEventDemo implements MouseListener{
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		/*BoxCell jp = (BoxCell) e.getSource();
+		if(jp.isHasMan()){
+			//System.out.println(jp.placeName + " has " + jp.getChessMan().name);
+			ChessMan clickedChessMan = jp.getChessMan();
+			clickedChessMan.setSelected(true);
+			
+		}
+		else{
+			//System.out.println(jp.getPlaceName() + " is empty");
+		}*/
 	}
 
 	@Override
@@ -38,5 +52,4 @@ public class MouseEventDemo implements MouseListener{
 		
 	}
 
-	
 }
