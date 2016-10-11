@@ -38,9 +38,9 @@ public class Game {
 	public void startGame(Player active){
 		System.out.println("Game starts..");
 		played = false;
-		while(!played){
+//		while(!played){
 			System.out.println("Player 1 plays");
-		}
+//		}
 	}
 	
 	private void generateChessMan(Player p) {

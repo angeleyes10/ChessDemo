@@ -4,6 +4,8 @@ import java.awt.event.MouseListener;
 
 public class MouseEventDemo implements MouseListener{
 
+	Player active = new Player();
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -13,6 +15,11 @@ public class MouseEventDemo implements MouseListener{
 			ChessMan clickedChessMan = jp.getChessMan();
 			clickedChessMan.setSelected(true);
 			System.out.println(clickedChessMan.team);
+			if(active.name == null){
+				active.name = clickedChessMan.team;
+			}
+
+			//active.name;
 		}
 		else{
 			System.out.println(jp.getPlaceName() + " is empty");
